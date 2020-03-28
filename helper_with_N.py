@@ -13,7 +13,7 @@ def DNA_to_onehot_dataset(dataset):
   for row in dataset:
     onehot_data.append(map(lambda e: options_onehot[e], row))
   onehot_data = np.array(onehot_data)
-  print np.shape(onehot_data)
+  print (np.shape(onehot_data))
   return onehot_data 
 
 # processes a DNA string to onehot
@@ -54,7 +54,7 @@ def generate_batches_from_file(path,batch_size):
     for_counter = 0
     submitted_counter = 0
     last_seq = ""
-    print "generator uses b_size: ", batch_size
+    print ("generator uses b_size: ", batch_size)
 
     while 1:
         seqs=[]
@@ -86,8 +86,8 @@ def generate_batches_from_file(path,batch_size):
                 batch_counter=0
                 seqs=[]
                 labels=[]
-        print "Did all lines in file ",  submitted_counter, total_counter, for_counter
-        print "Unique project names", PROJECT_NAMES
+        print ("Did all lines in file ",  submitted_counter, total_counter, for_counter)
+        print ("Unique project names", PROJECT_NAMES)
 
         seqs=[]
         labels=[]
@@ -121,10 +121,10 @@ class roc_callback(keras.callbacks.Callback):
         y_pred_val = self.model.predict(self.x_val)
         roc_val = roc_auc_score(self.y_val, y_pred_val)      
         
-        print " AUROC on Validation: ", str(round(roc_val,4))
+        print (" AUROC on Validation: ", str(round(roc_val,4)))
         if roc_val ==0.5: #happens if learning has crashed
           self.model.stop_training = True
-          print "ATTENTION: Stopped learning process, becuase learning had in all probability crashed!"
+          print ("ATTENTION: Stopped learning process, becuase learning had in all probability crashed!")
         return
  
     def on_batch_begin(self, batch, logs={}):
