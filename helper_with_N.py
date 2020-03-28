@@ -61,7 +61,7 @@ def generate_batches_from_file(path,batch_size):
         labels=[]
         batch_counter=0 # counts from 0 to batch_size
         
-        print "opened file again"
+        print ("opened file again")
         f = open(path)
         for_counter += 1
 
